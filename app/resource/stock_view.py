@@ -1,3 +1,4 @@
+import logging
 from uuid import UUID
 from fastapi import APIRouter, HTTPException, status
 from ..schemas.stock_schemas import StockResponse, StockDTO
@@ -51,3 +52,11 @@ async def get_stock(id: str):
             raise
     except Exception:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
+
+@router.get('/prices')
+async def get_prices():
+    try:
+        return await StockService.get_avg()
+    except Exception as e:
+        logging.error(f'Error to get prices -> {e}')
+        raise HTTPException(status_code=status.HTTP_410_GONE)
