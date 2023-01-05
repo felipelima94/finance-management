@@ -23,12 +23,18 @@ class CompanyDTO(BaseModel):
     cnpj: str | None = None
     updated: date | None = datetime.now()
 
-    def companyModelMapper(self) -> CompanyModel:
+    def modelMapper(self) -> CompanyModel:
         return CompanyModel(
             fantasy_name=self.fantasy_name,
             administrator=self.administrator,
             code=self.code,
             cnpj=self.cnpj
         )
+    class Config:
+        orm_mode = True
+
+class CompanyStock(BaseModel):
+    id: UUID
+    code: str
     class Config:
         orm_mode = True

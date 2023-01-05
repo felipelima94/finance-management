@@ -14,3 +14,4 @@ class CompanyModel(Base):
     cnpj = Column(String)
     created = Column(TIMESTAMP, nullable=False, default=datetime.now())
     updated = Column(TIMESTAMP, nullable=False, default=datetime.now())
+    stocks = relationship('StockModel', back_populates='company')
