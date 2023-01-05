@@ -1,7 +1,9 @@
+import logging
 from uuid import UUID
 from sqlalchemy.future import select
-from sqlalchemy import update, delete, exists
+from sqlalchemy import update, delete
 
+from .db_service import DbService
 from ..models.company_model import CompanyModel
 from ..schemas.company_schemas import CompanyDTO
 from ..database import async_session
@@ -9,9 +11,7 @@ from ..database import async_session
 class CompanyService:
 
     async def create_company(company: CompanyDTO):
-        async with async_session() as session:
-            session.add(company.companyModelMapper())
-            await session.commit()
+        return await DbService.save(company)
 
     async def update_company(company: CompanyDTO):
         async with async_session() as session:

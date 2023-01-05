@@ -1,50 +1,50 @@
 from uuid import UUID
 from fastapi import APIRouter, HTTPException, status
-from ..schemas.company_schemas import CompanyDTO, CompanyResponse
-from ..services.company_service import CompanyService
+from ..schemas.stock_schemas import StockResponse, StockDTO
+from ..services.stock_service import StockService
 
 router = APIRouter(
-        prefix='/company',
-        tags=['company'],
+        prefix='/stock',
+        tags=['stock'],
         responses={404: {'description': 'Not found'}}
     )
 
 
-@router.get('/list', response_model=list[CompanyResponse])
-async def list_company():
+@router.get('/list', response_model=list[StockResponse])
+async def list_stock():
     try:
-        return await CompanyService.list_company()
+        return await StockService.list_stock()
     except Exception:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)
 
 
 @router.post('/create')
-async def create_company(company: CompanyDTO):
+async def create_stock(stock: StockDTO):
     try:
-        return await CompanyService.create_company(company)
+        return await StockService.create_stock(stock)
     except Exception:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)
 
 @router.delete('/delete/{id}')
-async def delete_company(id: UUID):
+async def delete_stock(id: UUID):
     try:
-        return await CompanyService.delete_company(id)
+        return await StockService.delete_stock(id)
     except Exception:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)
 
 
 @router.put('/update')
-async def update_company(company: CompanyDTO):
+async def update_stock(stock: StockDTO):
     try:
-        await CompanyService.update_company(company)
+        await StockService.update_stock(stock)
         return status.HTTP_200_OK
     except Exception:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)
 
-@router.get('/find/{id}', response_model=CompanyResponse)
-async def get_company(id: str):
+@router.get('/find/{id}', response_model=StockResponse)
+async def get_stock(id: str):
     try:
-        result = await CompanyService.get_company(id)
+        result = await StockService.get_stock(id)
         if result is not None:
             return result
         else:
