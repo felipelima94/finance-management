@@ -1,6 +1,6 @@
 import uuid
 from datetime import datetime
-from sqlalchemy import Column, String, ForeignKey, TIMESTAMP, Numeric, Integer
+from sqlalchemy import Column, String, ForeignKey, TIMESTAMP, Numeric
 from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
 from ..database import Base
@@ -15,6 +15,6 @@ class StockModel(Base):
     bought_date = Column(TIMESTAMP, nullable=False)
     value = Column(Numeric, nullable=False)
     fee = Column(Numeric)
-    amount = Column(Integer, nullable=False)
+    amount = Column(Numeric, nullable=False)
     created = Column(TIMESTAMP, nullable=False, default=datetime.now())
     updated = Column(TIMESTAMP, nullable=False, default=datetime.now())
