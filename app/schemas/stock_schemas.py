@@ -12,7 +12,7 @@ class StockResponse(BaseModel):
     bought_date: date
     value: float
     fee: float
-    amount: int
+    amount: float
     created: date
     updated: date
 
@@ -27,7 +27,7 @@ class StockDTO(BaseModel):
     bought_date: date
     value: float
     fee: float | None = None
-    amount: int
+    amount: float
     updated: date | None = datetime.now()
 
     def modelMapper(self) -> StockModel:

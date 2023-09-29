@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.company-list-table {
+    display: grid;
+    grid-template-columns: 2fr 5fr 1fr 1fr 0.5fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.stocks_tables {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.cell {
+    font-size: 1rem;
+    text-align: left;
+    padding: 0.5rem;
+}
+
+.cell-head {
+    color: #EEE;
+    background-color: #222;
+    font-weight: bold;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin: auto;
+    padding: 0;
+}
+.menu ul li {
+    padding: 0.5rem 1rem;
+    background: greenyellow;
+}
+
+.menu a {
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(60, 0, 120);
+}
+
+.form-company {
+    margin: auto;
+    width: 50%;
+    padding: 2rem;
+}
+
+.form-company div {
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr;
+}
+
+.form-company div :nth-child(odd) {
+    text-align: right;
+    margin: auto 1rem;
+}
+
+input, button {
+    height: 2rem;
+}
+
+.form-company div:last-child {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: right;
+}
+
+

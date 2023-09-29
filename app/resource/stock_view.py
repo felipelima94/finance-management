@@ -3,6 +3,7 @@ from uuid import UUID
 from fastapi import APIRouter, HTTPException, status
 from ..schemas.stock_schemas import StockResponse, StockDTO
 from ..services.stock_service import StockService
+from ..schemas.summary_schemas import SummaryDTO
 
 router = APIRouter(
         prefix='/stock',
@@ -11,11 +12,13 @@ router = APIRouter(
     )
 
 
-@router.get('/list', response_model=list[StockResponse])
+@router.get('/list', response_model=list[SummaryDTO])
 async def list_stock():
+    stock_svc = StockService()
     try:
-        return await StockService.list_stock()
-    except Exception:
+        return await stock_svc.list_stock()
+    except Exception as e:
+        print(e)
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)
 
 

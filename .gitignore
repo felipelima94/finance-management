@@ -1,3 +1,5 @@
 __pycache__
 fin-manage
 .env
+node_modules
+.next
